@@ -1,5 +1,4 @@
 require './Interaction_network'
-require 'json'
 
 gene_file = ARGV
 #gene_file = 'tiny.txt'
@@ -9,9 +8,17 @@ puts 'To run the program: ruby main.rb gene_file'
 abort
 end
 
+
 a = Interaction_network.new({:gene_file => gene_file})
 puts "Looking at the genes of file #{gene_file}"
-a.find_networks(a.genes, 0, {})
-a.write_report
+
+a.find_networks(a.genes, 1, {})
+puts "Networks found"
+
+
+a.write_recursive_report
 
 puts 'We are ready!'
+
+
+
