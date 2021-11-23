@@ -36,7 +36,7 @@ With this program the object Interaction_network is created recursively with the
 - links -> contain an array of hashes, every hash contains the protein id of the interactors of that protein and the information of that interaction (type of interaction, pubmed id, miscore...)
 
 
-The report generated include all the genes that are interacting, however if they are the target of the interaction and not the source I decide don't write the interactions and only write it when they are the source. The interactions retrieved appear with all the information to help the user to research later on in case be interested in one interaction in particular. The report also indicate the depth of every interaction.
+The report generated include all the genes that are interacting, however if they are the target of the interaction and not the source I decide don't write the interactions and only write it when they are the source (to reduce size of the file). The interactions retrieved appear with all the information to help the user to research later on in case be interested in one interaction in particular. The report also indicate the depth of every interaction.
 
 
 The good part of my program is the implementation throught objects, so in the future you can do the consult you want in your object over the protein or gene you are interesting in. 
