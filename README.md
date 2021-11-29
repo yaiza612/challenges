@@ -35,12 +35,15 @@ With this program the object Interaction_network is created recursively with the
 - intact id
 - links -> contain an array of hashes, every hash contains the protein id of the interactors of that protein and the information of that interaction (type of interaction, pubmed id, miscore...)
 
-The idea is use that information to look into specific associations the user may be interesting in and in the future implement also a function to plot that specific network using the miscore as a weight of the nodes of the graph. (Did not have time for this)
+
+The report generated include all the genes that are interacting, however if they are the target of the interaction and not the source I decide don't write the interactions and only write it when they are the source (to reduce size of the file). The interactions retrieved appear with all the information to help the user to research later on in case be interested in one interaction in particular. The report also indicate the depth of every interaction.
+
 
 The good part of my program is the implementation throught objects, so in the future you can do the consult you want in your object over the protein or gene you are interesting in. 
+The idea is use that information to look into specific associations the user may be interesting in and in the future implement also a function to plot that specific network using the miscore as a weight of the nodes of the graph. 
 
-UPDATE 10/11/2021 I commit this morning because I wanted to update the report with all the list of genes and depth of the recursion 1 but it just takes too long.
 
-UPDATE 11/11/2021 I update the report with the list of genes of tiny txt and depth 1! Because with the whole list take too long, but the important part is that the recursion function works.
+
+
 
 ## Challenge 3
