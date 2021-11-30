@@ -41,7 +41,7 @@ def create_my_features(coordinates, sequence, gene_id)
     my_features.append(Bio::Feature::Qualifier.new('strand', value[1]))
     my_features.append(Bio::Feature::Qualifier.new('exon', value[0]))
     my_features.append(Bio::Feature::Qualifier.new('nucleotide region', "#{$fw_region.upcase}"))
-    CSV.open("gene_features.gff", 'a',col_sep: "\t", headers: true) do |tsv|
+    CSV.open("gene_features.gff3", 'a',col_sep: "\t", headers: true) do |tsv|
       tsv << [gene_id, 'region_CTTCTT', 'exon', key[0], key[1], '.', value[1], '.', "ID= #{value[0]}"]
       exon_features << my_features
     end
@@ -61,7 +61,7 @@ def create_my_chromosome_features (coordinates,  sequence, gene_id)
     end_chr= chromosome[1].to_i + key[1]
     #write GFF file to avoid double iteration
      # write it here to avoid double iteration
-    CSV.open("chromosome_features.gff", 'a',col_sep: "\t", headers: true) do |tsv|
+    CSV.open("chromosome_features.gff3", 'a',col_sep: "\t", headers: true) do |tsv|
       tsv << ["Chr#{chromosome[0]}", 'region_CTTCTT', "exon#{value[0]}", begin_chr, end_chr, '.', value[1], '.', "ID=gene_id#{gene_id}"]
     end
   end
@@ -74,10 +74,11 @@ def exon_scanner (sequence)
     # https://www.javatpoint.com/ruby-variables
     $fw_region = 'cttctt'
     # in the reverse strand the complementary region is gaagaa and the inverse is aagaag
-    $re_region = 'aagaag'
+    # $re_region = 'aagaag' # not necessary at the end because I will already use the reverse complement
+    # the code is easy, genetics is tricky
     length = sequence.length
     fw_coordinates = sequence.indices /#{$fw_region}/
-    re_coordinates = sequence.reverse_complement.indices /#{$re_region}/
+    re_coordinates = sequence.reverse_complement.indices /#{$fw_region}/
     features = sequence.features
     features.each do |feature|
       id_search = Regexp.new(/[Aa][Tt]\d[Gg]\d\d\d\d\d.\d.exon\d/)
@@ -96,7 +97,7 @@ def exon_scanner (sequence)
           strand = '-'
           re_coordinates.each do |starting|
 
-            ending = starting + $re_region.length - 1
+            ending = starting + $fw_region.length - 1
 
             if (starting >= coordinates_exon[0]) && (starting <= coordinates_exon[1]) && (ending >= coordinates_exon[0]) && (ending <= coordinates_exon[1])
 
