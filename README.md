@@ -47,3 +47,12 @@ The idea is use that information to look into specific associations the user may
 
 
 ## Challenge 3
+Gems required: 
+
+CSV and date 
+
+``gem install CSV``
+
+To run the program: 
+
+``ruby main.rb genefile ``
