@@ -5,8 +5,8 @@ require 'json'
 
 
 def do_assignment(fasta_file1, fasta_file2)
-  organism1 = descompress(fasta_file)
-  organism2 = descompress(fasta_file)
+  organism1 = descompress(fasta_file1)
+  organism2 = descompress(fasta_file2)
 
   # flatfasta
 
