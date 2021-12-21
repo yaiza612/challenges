@@ -56,3 +56,19 @@ CSV and date
 To run the program: 
 
 ``ruby main.rb genefile ``
+
+## Challenge 4 
+
+The orthologues are found using the best reciprocal hits technique. I follow the indications of the paper: https://doi.org/10.1093/bioinformatics/btm585
+Where you can find:
+  # Based on our results, the recommended parameters for the best detection of orthologs as reciprocal best hits
+  # is the combination of soft filtering with a Smith–Waterman final alignment (the -F “m S” -s T options in NCBI's BLASTP).
+  # These options resulted in both the highest number of orthologs and the minimal error rates.
+  # However, most of the improvement can be achieved using soft filtering (-F “m S”) alone.
+They prove that this is the best way to detect the orthologues. 
+
+Nevertheless, to prove that are true orthologues, some complementaries analysis are necessary. After the best reciprocal hits technique, the best practices is do phylogenetic tree analyses of sequences in both species.
+
+To run the program:
+
+``ruby main.rb fasta_file fasta_file``
