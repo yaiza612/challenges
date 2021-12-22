@@ -9,5 +9,7 @@ unless organism1 && organism2 #https://code-mven.com/argv-the-command-line-argum
   abort
 end
 
+do_assignment(organism1, organism2)
+
 puts 'report written'
 puts 'we are ready'
